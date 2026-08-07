@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="depends,defects"
+         requireCoverageMetadata="false"
+         beStrictAboutCoverageMetadata="false"
+         beStrictAboutOutputDuringTests="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         colors="true">
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix="Test.php">tests/phpunit/unit</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">dev-stubs</directory>
+        </exclude>
+    </source>
+</phpunit>

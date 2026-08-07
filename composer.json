@@ -1,0 +1,39 @@
+{
+    "name": "detain/phlix-plugin-arctic-jade-theme",
+    "type": "phlix-plugin",
+    "description": "Arctic Jade — a crystalline teal ui-theme for Phlix with deep ocean-dark surfaces and luminous jade accents.",
+    "license": "MIT",
+    "keywords": ["phlix", "phlix-plugin", "ui-theme", "theme", "arctic-jade", "teal", "jade"],
+    "homepage": "https://github.com/detain/phlix-plugin-arctic-jade-theme",
+    "require": {
+        "php": ">=8.3",
+        "detain/phlix-shared": "^0.21",
+        "psr/container": "^1.1 || ^2.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^10.0",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/detain/phlix-shared.git" }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Phlix\\ArcticJade\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phlix\\ArcticJade\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml"
+    }
+}
