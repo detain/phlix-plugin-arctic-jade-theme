@@ -1,55 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="Phlix Arctic Jade Plugin">
-    <description>PHP CodeSniffer rules for Phlix Arctic Jade Theme Plugin</description>
-
+<ruleset name="Phlix Theme Plugin">
+    <description>PSR-12 coding standard</description>
     <file>src</file>
     <file>tests</file>
-
-    <!-- PSR-12 -->
+    <file>dev-stubs</file>
+    <exclude-pattern>vendor/</exclude-pattern>
     <rule ref="PSR12"/>
-
-    <!-- Override some PSR-12 rules for better readability -->
-    <rule ref="PSR12.Files.FileHeader">
-        <properties>
-            <property name="headerComment" value=""/>
-        </properties>
-    </rule>
-
-    <!-- Disallow short tags -->
-    <rule ref="Generic.PHP.DisallowShortTags"/>
-
-    <!-- Disallow eval -->
-    <rule ref="Generic.PHP.ForbiddenFunctions">
-        <properties>
-            <property name="forbiddenFunctions" type="array">
-                <property name="eval" value="null"/>
-            </property>
-        </properties>
-    </rule>
-
-    <!-- Line length -->
-    <rule ref="Generic.Files.LineLength">
-        <properties>
-            <property name="lineLimit" value="120"/>
-            <property name="absoluteLineLimit" value="120"/>
-        </properties>
-    </rule>
-
-    <!-- Indentation -->
-    <rule ref="Generic.WhiteSpace.ScopeIndent">
-        <properties>
-            <property name="indent" value="4"/>
-            <property name="baseIndent" value="4"/>
-        </properties>
-    </rule>
-
-    <!-- Array indentation -->
-    <rule ref="PEAR.Arrays.MultiLineAssignment">
-        <properties>
-            <property name="indent" value="4"/>
-        </properties>
-    </rule>
-
-    <!-- Exclude dev-stubs from sniff -->
-    <exclude-pattern>dev-stubs/*</exclude-pattern>
 </ruleset>
