@@ -2,10 +2,11 @@ parameters:
     level: 9
     scanDirectories:
         - dev-stubs
+    paths:
+        - src
     excludePaths:
         - tests
         - vendor
-    checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         - '#Call to an undefined method SplFileInfo::getRealPath\(\)#'
