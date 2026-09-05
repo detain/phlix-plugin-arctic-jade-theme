@@ -91,14 +91,26 @@ composer require detain/phlix-plugin-arctic-jade-theme
 # Install dependencies
 composer install
 
-# Run PHPStan static analysis
+# Run PHPStan static analysis (level 9, scans dev-stubs/)
 composer phpstan
 
-# Run PHP CodeSniffer
+# Run PHP CodeSniffer (PSR-12 across src/, tests/, dev-stubs/)
 composer phpcs
 
 # Run PHPUnit tests
 ./vendor/bin/phpunit
+```
+
+Tests live in `tests/` and load `tests/bootstrap.php`, which registers the
+`dev-stubs/` interfaces only when the host contracts are not already present.
+
+CI (`.github/workflows/test.yml`) runs the same checks on PHP `8.3` and `8.4`,
+uploading coverage to Codacy from the `8.3` leg:
+
+```bash
+vendor/bin/phpunit --colors=always
+vendor/bin/phpstan analyse -c phpstan.neon --no-progress
+vendor/bin/phpcs --standard=phpcs.xml
 ```
 
 ## License
