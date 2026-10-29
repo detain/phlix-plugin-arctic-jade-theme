@@ -21,6 +21,9 @@ use RuntimeException;
  *    reach AA (>= 4.5:1) on every background and surface. The ~20 ui sites
  *    consuming it (`color: var(--accent-text)`) sit on the elevation stack.
  *    The ink-on-fill role is `--text-on-accent`, pinned against `--accent`.
+ *  - `--text-subtle` carries form placeholders and hints (ui Input.vue
+ *    `::placeholder`, Combobox, CommandPalette, labels/metadata) — body-text
+ *    tier, so it must reach AA (>= 4.5:1) on every ground too.
  *
  * Values are parsed from providedThemes() so the law follows the palette;
  * it is not a duplicated constant table. The WCAG 1.4.3 math is recomputed
@@ -78,6 +81,27 @@ final class TokenContrastTest extends TestCase
                 $ratio,
                 sprintf(
                     '--accent-text %s on %s (%s) is %.2f:1 — below the 4.5:1 AA foreground floor',
+                    $ink,
+                    $name,
+                    $ground,
+                    $ratio
+                )
+            );
+        }
+    }
+
+    #[Test]
+    public function testTextSubtleMeetsAaAsBodyTierOnEveryGround(): void
+    {
+        $ink = $this->tokens()['--text-subtle'];
+
+        foreach ($this->grounds() as $name => $ground) {
+            $ratio = $this->contrastRatio($ink, $ground);
+            $this->assertGreaterThanOrEqual(
+                self::AA_TEXT_RATIO,
+                $ratio,
+                sprintf(
+                    '--text-subtle %s on %s (%s) is %.2f:1 — below the 4.5:1 AA floor',
                     $ink,
                     $name,
                     $ground,

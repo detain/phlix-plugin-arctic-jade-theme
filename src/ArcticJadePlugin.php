@@ -122,7 +122,7 @@ final class ArcticJadePlugin implements LifecycleInterface, ThemeSourceInterface
                     // Text ramp — icy whites to muted sea-green.
                     '--text' => '#e5f4f1',
                     '--text-muted' => '#7eb8b3',
-                    '--text-subtle' => '#4a7572',
+                    '--text-subtle' => '#679a95',
                     '--text-faint' => '#2a4543',
                     '--text-on-accent' => '#001f1a',
 

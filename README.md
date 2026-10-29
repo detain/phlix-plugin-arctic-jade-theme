@@ -44,7 +44,7 @@ Arctic Jade is a dark theme that extends the built-in `midnight` base. It featur
 |-------|-------|-------------|
 | `--text` | `#e5f4f1` | Primary text (icy white) |
 | `--text-muted` | `#7eb8b3` | Muted text |
-| `--text-subtle` | `#4a7572` | Subtle text |
+| `--text-subtle` | `#679a95` | Subtle text — placeholders/hints (AA on all surfaces) |
 | `--text-faint` | `#2a4543` | Faint/disabled text |
 | `--text-on-accent` | `#001f1a` | Text on accent color |
 
