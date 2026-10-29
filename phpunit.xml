@@ -27,4 +27,9 @@
             <directory suffix=".php">dev-stubs</directory>
         </exclude>
     </source>
+    <coverage>
+        <report>
+            <cobertura outputFile="coverage.xml"/>
+        </report>
+    </coverage>
 </phpunit>
