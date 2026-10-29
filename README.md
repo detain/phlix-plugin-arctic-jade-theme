@@ -76,9 +76,54 @@ Arctic Jade is a dark theme that extends the built-in `midnight` base. It featur
 
 ## Installation
 
+This package is **not published to Packagist** (its
+`repo.packagist.org/p2/detain/phlix-plugin-arctic-jade-theme.json` metadata
+endpoint answers 404, verified 2026-10-29), so a plain
+
 ```bash
 composer require detain/phlix-plugin-arctic-jade-theme
 ```
+
+resolves nothing — and it was never the install route anyway: the Phlix server
+does not scan Composer's `vendor/` for plugins. The plugin loader stages
+plugins under the server's `var/plugins/` from digest-pinned sources and
+verifies the bytes before extracting anything (remote sources without a pin are
+refused by design, not by accident).
+
+The supported route is the official plugin catalog — this repo is listed in
+[`detain/phlix-plugins`](https://github.com/detain/phlix-plugins) with a pinned
+`ref` + `artifactSha256`:
+
+1. Log in as an admin user.
+2. Open **Admin → Plugins** (`/app/admin/plugins`).
+3. Find **Arctic Jade Theme** in the catalog and press **Install**.
+
+The CLI equivalent, run from the `phlix-server` install directory, passes the
+repository URL and the server supplies the catalog pin itself:
+
+```bash
+php bin/phlix plugin:install https://github.com/detain/phlix-plugin-arctic-jade-theme
+```
+
+> ⚠ **Redirect-gate caveat, verified 2026-10-29 against a current server:**
+> the installer's SSRF gate refuses any response chain containing a `3xx`, and
+> GitHub answers every `github.com/…/archive/…` tarball request with a `302`
+> to `codeload.github.com`. Until a server-side codeload hop ships, the
+> catalog click and the repo-URL form above both fail with
+> `HTTP redirects are not allowed`. What works today is a local archive over
+> `file://`, which is exempt because the bytes are already operator-local:
+>
+> ```bash
+> # from one directory above your checkout of this repo:
+> tar czf /tmp/phlix-plugin-arctic-jade-theme.tar.gz \
+>     --exclude='*/vendor' --exclude='*/.git' phlix-plugin-arctic-jade-theme
+> php bin/phlix plugin:install file:///tmp/phlix-plugin-arctic-jade-theme.tar.gz
+> ```
+>
+> (Or paste `file:///tmp/phlix-plugin-arctic-jade-theme.tar.gz` into the
+> admin **Install from URL** panel.)
+
+Installing is only half the job — see **After installing** below.
 
 ## Requirements
 
