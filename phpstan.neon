@@ -7,6 +7,3 @@ parameters:
     excludePaths:
         - tests
         - vendor
-    reportUnmatchedIgnoredErrors: false
-    ignoreErrors:
-        - '#Call to an undefined method SplFileInfo::getRealPath\(\)#'
