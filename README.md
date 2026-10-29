@@ -125,6 +125,30 @@ php bin/phlix plugin:install https://github.com/detain/phlix-plugin-arctic-jade-
 
 Installing is only half the job — see **After installing** below.
 
+## After installing: enable, then select
+
+**Installing this plugin changes nothing on its own.** The install step only
+stages the code under `var/plugins/`. Two further steps follow, and each one is
+a deliberate gate rather than a bug — this is the estate's install ≠ enable law
+(documented for the whole family in the
+[`phlix-plugin-sample-theme`](https://github.com/detain/phlix-plugin-sample-theme)
+README):
+
+1. **An admin enables it.** Enabling is what registers the theme: the loader's
+   `enable()` hands this plugin's entry class to the theme registry precisely
+   because it implements `Phlix\Theming\ThemeSourceInterface`. Flip the plugin's
+   switch in **Admin → Plugins**, or from the `phlix-server` install directory:
+
+   ```bash
+   php bin/phlix plugin:enable phlix-plugin-arctic-jade-theme
+   ```
+
+2. **Each member selects it.** An enabled theme is *offered*, never *forced*.
+   Every member who wants the look picks **Arctic Jade** in their own theme
+   settings; members who chose something else keep what they had.
+
+Disabling the plugin deregisters the theme ids it contributed.
+
 ## Requirements
 
 - PHP >= 8.3
