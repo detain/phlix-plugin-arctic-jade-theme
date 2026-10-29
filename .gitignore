@@ -1,0 +1,12 @@
+/vendor/
+/coverage.xml
+/coverage-report/
+/.phpunit.cache/
+/.phpunit.result.cache
+
+# Per-checkout agent tooling and state — never part of a plugin package.
+.caliber/
+.claude/
+.opencode/
+.remember/
+CALIBER_LEARNINGS.md
