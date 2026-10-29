@@ -24,7 +24,7 @@ Arctic Jade is a dark theme that extends the built-in `midnight` base. It featur
 | `--accent-hover` | `#33edd2` | Luminous jade hover state |
 | `--accent-active` | `#00b8a0` | Active/pressed state |
 | `--accent-soft` | `rgba(0, 229, 192, 0.12)` | Soft accent for backgrounds |
-| `--accent-ring` | `rgba(0, 229, 192, 0.45)` | Focus ring color |
+| `--accent-ring` | `rgba(0, 229, 192, 0.55)` | Focus ring color |
 | `--accent-text` | `#00e5c0` | Accent color as foreground text/icon (AA on bg/surface) |
 
 ### Background & Surface

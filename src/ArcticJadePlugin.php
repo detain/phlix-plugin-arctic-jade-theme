@@ -108,7 +108,7 @@ final class ArcticJadePlugin implements LifecycleInterface, ThemeSourceInterface
                     '--accent-hover' => '#33edd2',
                     '--accent-active' => '#00b8a0',
                     '--accent-soft' => 'rgba(0, 229, 192, 0.12)',
-                    '--accent-ring' => 'rgba(0, 229, 192, 0.45)',
+                    '--accent-ring' => 'rgba(0, 229, 192, 0.55)',
                     '--accent-text' => '#00e5c0',
 
                     // Background + elevation stack — deep ocean-dark.
