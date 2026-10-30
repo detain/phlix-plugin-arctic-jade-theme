@@ -3,6 +3,12 @@
     "type": "phlix-plugin",
     "description": "Arctic Jade — a crystalline teal ui-theme for Phlix with deep ocean-dark surfaces and luminous jade accents.",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Joe Huss",
+            "email": "detain@interserver.net"
+        }
+    ],
     "keywords": ["phlix", "phlix-plugin", "ui-theme", "theme", "arctic-jade", "teal", "jade"],
     "homepage": "https://github.com/detain/phlix-plugin-arctic-jade-theme",
     "require": {

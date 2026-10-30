@@ -4,6 +4,6 @@ parameters:
         - dev-stubs
     paths:
         - src
-    excludePaths:
         - tests
+    excludePaths:
         - vendor

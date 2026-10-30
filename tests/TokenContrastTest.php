@@ -262,9 +262,9 @@ final class TokenContrastTest extends TestCase
         }
 
         return [
-            hexdec($matches[1]),
-            hexdec($matches[2]),
-            hexdec($matches[3]),
+            (int) hexdec($matches[1]),
+            (int) hexdec($matches[2]),
+            (int) hexdec($matches[3]),
         ];
     }
 }

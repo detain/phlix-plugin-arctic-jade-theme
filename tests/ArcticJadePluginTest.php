@@ -44,7 +44,8 @@ final class ArcticJadePluginTest extends TestCase
     {
         $themes = $this->plugin->providedThemes();
 
-        $this->assertIsArray($themes);
+        // providedThemes() is typed list<array<array-key, mixed>>; the
+        // structural law below is what this test actually pins.
         $this->assertNotEmpty($themes, 'Plugin must provide at least one theme');
 
         $theme = $themes[0];
@@ -62,6 +63,7 @@ final class ArcticJadePluginTest extends TestCase
         $themes = $this->plugin->providedThemes();
         $theme = $themes[0];
         $tokens = $theme['tokens'];
+        $this->assertIsArray($tokens, 'Theme payload must carry a tokens map');
 
         foreach ($tokens as $token => $value) {
             $this->assertIsString($value, "Token {$token} must have a string value");
@@ -77,16 +79,18 @@ final class ArcticJadePluginTest extends TestCase
     {
         $container = $this->createMock(\Psr\Container\ContainerInterface::class);
 
-        // Should not throw
+        // The contract is the absence of a throw: reaching the next line
+        // IS the assertion. addToAssertionCount keeps PHPUnit's risky-test
+        // gate satisfied without a tautological assertTrue.
         $this->plugin->onEnable($container);
-        $this->assertTrue(true, 'onEnable should complete without errors');
+        $this->addToAssertionCount(1);
     }
 
     #[Test]
     public function testOnDisableDoesNotThrow(): void
     {
-        // Should not throw
+        // No-throw contract, same law as onEnable above.
         $this->plugin->onDisable();
-        $this->assertTrue(true, 'onDisable should complete without errors');
+        $this->addToAssertionCount(1);
     }
 }

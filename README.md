@@ -11,7 +11,7 @@ Arctic Jade is a dark theme that extends the built-in `midnight` base. It featur
 - **Theme ID:** arctic-jade
 - **Name:** Arctic Jade
 - **Extends:** midnight
-- **Type:** UI Theme
+- **Type:** `ui-theme`
 - **Dark Mode:** Yes
 
 ## Color Palette
@@ -160,10 +160,10 @@ Disabling the plugin deregisters the theme ids it contributed.
 # Install dependencies
 composer install
 
-# Run PHPStan static analysis (level 9, scans dev-stubs/)
+# Run PHPStan static analysis (level 9 over src/ and tests/; scans dev-stubs/)
 composer phpstan
 
-# Run PHP CodeSniffer (PSR-12 across src/, tests/, dev-stubs/)
+# Run PHP CodeSniffer (PSR-12 across src/, tests/, dev-stubs/, scripts/)
 composer phpcs
 
 # Run PHPUnit tests
