@@ -731,8 +731,7 @@ if ($ignored !== []) {
     annotate(
         'notice',
         sprintf(
-            '%d security advisory/ies affecting %d package(s) are IGNORED by '
-            . 'composer config — acknowledged, not fixed.',
+            '%d security advisory/ies affecting %d package(s) are IGNORED by composer config — acknowledged, not fixed.',
             countAdvisories($ignored),
             count($ignored),
         ),

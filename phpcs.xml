@@ -17,4 +17,14 @@
     <rule ref="PSR1.Files.SideEffects">
         <exclude-pattern>scripts/</exclude-pattern>
     </rule>
+    <!--
+        Same scoping law for the line-length sniff: the gate script's advisory
+        annotation strings are fixed prose the guard suite prefix-pins, so the
+        121-char literal must stay byte-identical to the S440 family rather
+        than be split to satisfy the 120-char warning. LineLength is scoped
+        off for scripts/ only; src/, tests/ and dev-stubs/ keep the full law.
+    -->
+    <rule ref="Generic.Files.LineLength">
+        <exclude-pattern>scripts/</exclude-pattern>
+    </rule>
 </ruleset>
