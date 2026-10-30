@@ -29,6 +29,10 @@ use RuntimeException;
  *    Every ground it can be painted on, composited, must reach the 3:1
  *    WCAG 1.4.11 non-text minimum against every ground it can sit adjacent
  *    to — the full adjacency matrix, not just the same-ground state change.
+ *  - The body ramp (`--text`, `--text-muted`) and the accent ramp used as
+ *    foreground (`--accent`, `--accent-hover`, `--accent-active`) hold AA on
+ *    every shipped ground too — the whole webux contrast table is asserted as
+ *    luminance math, not just the roles that once failed it.
  *
  * Values are parsed from providedThemes() so the law follows the palette;
  * it is not a duplicated constant table. The WCAG 1.4.3 math is recomputed
@@ -135,6 +139,38 @@ final class TokenContrastTest extends TestCase
                 $ratio
             )
         );
+    }
+
+    #[Test]
+    public function testBodyAndAccentInksMeetAaOnEveryGround(): void
+    {
+        // Completes the contrast law beyond the role-swap trio: every ink the
+        // theme itself ships must clear AA text on every ground it is painted
+        // on (the webux review's contrast table, asserted as math rather than
+        // transcribed ratios). --text-faint is deliberately NOT in the set:
+        // it is the disabled/decorative tier by design (~1.9:1 on black in
+        // the midnight base), not a body-text role.
+        $tokens = $this->tokens();
+
+        foreach (['--text', '--text-muted', '--accent', '--accent-hover', '--accent-active'] as $inkKey) {
+            $ink = $tokens[$inkKey];
+
+            foreach ($this->grounds() as $name => $ground) {
+                $ratio = $this->contrastRatio($ink, $ground);
+                $this->assertGreaterThanOrEqual(
+                    self::AA_TEXT_RATIO,
+                    $ratio,
+                    sprintf(
+                        '%s %s on %s (%s) is %.2f:1 — below the 4.5:1 AA floor',
+                        $inkKey,
+                        $ink,
+                        $name,
+                        $ground,
+                        $ratio
+                    )
+                );
+            }
+        }
     }
 
     #[Test]
