@@ -206,6 +206,58 @@ final class ArcticJadePluginTest extends TestCase
         }
     }
 
+    #[Test]
+    public function testLegacyAliasTokensMatchTheirModernTwins(): void
+    {
+        // The shipped `--color-*` aliases are explicit literals on purpose
+        // (one fewer cascade assumption — see the src comment above them),
+        // which means a future palette bump can silently split an alias from
+        // its modern twin. This is the CI teeth the review asked for: change
+        // `--surface` without `--color-surface` and it reddens here first.
+        $tokens = $this->tokensOfShippedTheme();
+        $aliasCount = 0;
+
+        foreach ($tokens as $token => $value) {
+            $name = (string) $token;
+
+            if (!str_starts_with($name, '--color-')) {
+                continue;
+            }
+
+            $twin = '--' . substr($name, strlen('--color-'));
+            $this->assertArrayHasKey(
+                $twin,
+                $tokens,
+                sprintf('Legacy alias "%s" has no modern twin "%s" in this theme', $name, $twin)
+            );
+            $this->assertIsString($value, "Token {$name} must have a string value");
+
+            $twinValue = $tokens[$twin];
+            $this->assertIsString($twinValue, "Twin {$twin} must have a string value");
+            $this->assertSame(
+                $twinValue,
+                $value,
+                sprintf(
+                    'Legacy alias "%s" (%s) has split from its modern twin "%s" (%s); '
+                    . 'the alias is an explicit literal, so the two must be bumped together.',
+                    $name,
+                    $value,
+                    $twin,
+                    $twinValue
+                )
+            );
+            $aliasCount++;
+        }
+
+        $this->assertSame(
+            5,
+            $aliasCount,
+            'Theme ships exactly the five --color-* aliases the SPA reads; '
+            . 'adding one without its modern twin (or the twin without the alias) '
+            . 'breaks the vocabulary the src comment documents.'
+        );
+    }
+
     /**
      * Value forms the host grammar refuses — each one green under the old
      * substring-only test, each one a hard enable-failure in production.

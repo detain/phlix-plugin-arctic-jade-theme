@@ -137,8 +137,18 @@ final class ArcticJadePlugin implements LifecycleInterface, ThemeSourceInterface
                     '--ambient' => 'rgba(0, 229, 192, 0.18)',
 
                     // Legacy `--color-*` aliases — only the ones the shipped SPA
-                    // still reads. See class docblock for the full list of 13
-                    // aliases that are deliberately omitted.
+                    // still reads. colors.css declares each of these as
+                    // `var(--modern-token)` inside every theme block, so they
+                    // would in principle follow the overrides above through the
+                    // cascade; they are set explicitly anyway because that is
+                    // one fewer cascade assumption between a plugin author and a
+                    // correct render. The full legacy vocabulary is the host
+                    // constant \Phlix\Theming\ThemeTokenAllowlist::LEGACY_ALIAS
+                    // — 22 names measured at the 2026-10-30 server tip; these 5
+                    // are kept, the remaining 17 stay inherited from midnight.
+                    // Each literal below is pinned equal to its modern twin by
+                    // ArcticJadePluginTest::testLegacyAliasTokensMatchTheirModernTwins,
+                    // so a value bump that forgets its alias reddens CI.
                     '--color-bg' => '#040a09',
                     '--color-surface' => '#0b1415',
                     '--color-text' => '#e5f4f1',
