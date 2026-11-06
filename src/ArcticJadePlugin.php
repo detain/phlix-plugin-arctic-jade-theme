@@ -24,11 +24,12 @@ use Psr\Container\ContainerInterface;
  *
  * ## Token philosophy
  *
- * Arctic Jade's accent ramp (`--accent*`) maps the teal spectrum from deep
- * ocean (`--accent`) through luminous jade (`--accent-hover`) to active
- * `--accent-active`. The surface stack steps from near-black (`--bg`) through
- * layered dark-teal surfaces to glass-morphism layers. Text progresses from
- * bright `--text` to progressively muted tones.
+ * Arctic Jade's accent ramp (`--accent*`) maps the teal spectrum from the
+ * bright crystalline `--accent`, through the luminous jade highlight of
+ * `--accent-hover`, down to the deep teal `--accent-active`. The surface
+ * stack steps from near-black (`--bg`) through layered dark-teal surfaces
+ * to glass-morphism layers. Text progresses from bright `--text` to
+ * progressively muted tones.
  *
  * All values are literals. The host grammar accepts only hex, rgb/rgba/hsl/hsla
  * with numeric arguments, bare numbers, transparent, or currentColor — no
@@ -73,7 +74,7 @@ final class ArcticJadePlugin implements LifecycleInterface, ThemeSourceInterface
     /**
      * A theme plugin subscribes to no events.
      *
-     * @return array<class-string, string> Always empty.
+     * @return array<class-string, string|callable> Always empty.
      */
     public function subscribedEvents(): array
     {

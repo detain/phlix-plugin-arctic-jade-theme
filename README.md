@@ -35,8 +35,8 @@ Arctic Jade is a dark theme that extends the built-in `midnight` base. It featur
 | `--surface` | `#0b1415` | Primary surface |
 | `--surface-2` | `#101f21` | Elevated surface |
 | `--surface-3` | `#162a2d` | Higher elevation surface |
-| `--surface-glass` | `rgba(11, 20, 21, 0.58)` | Glass morphism base |
-| `--surface-glass-strong` | `rgba(4, 10, 9, 0.82)` | Strong glass effect |
+| `--surface-glass` | `rgba(11, 20, 21, 0.58)` | Glass-morphism base surface |
+| `--surface-glass-strong` | `rgba(4, 10, 9, 0.82)` | Strong glass-morphism effect |
 
 ### Text Colors
 
